@@ -34,14 +34,17 @@ def load():
     import io
 
     model_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/best_model.pkl"
-    features_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/training_features.pkl"
     dataframe_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/full_data.pkl"
     model_response = requests.get(model_url)
     model_response.raise_for_status()
-
     model_bytes = io.BytesIO(model_response.content)
     model = joblib.load(model_bytes)
-
+###### Features #######
+    features_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/training_features.pkl"
+    features_response = requests.get(features_url)
+    model_response.raise_for_status()
+    features_bytes = io.BytesIO(featuresresponse.content)
+    features = joblib.load(features_bytes)
 
 
     return model
