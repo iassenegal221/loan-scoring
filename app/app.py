@@ -20,14 +20,14 @@ response.raise_for_status()
 logo_image = Image.open(response.raw)
 ##
 url = "https://github.com/iassenegal221/loan-scoring/blob/main/app/data/home_credit.jpeg"
-response = requests.get(url, stream=True)
-response.raise_for_status()
-cover_image = Image.open(response.raw)
+#response = requests.get(url, stream=True)
+#response.raise_for_status()
+#cover_image = Image.open(response.raw)
 ##
 url = "https://github.com/iassenegal221/loan-scoring/raw/main/app/data/lifecycle.png"
-response = requests.get(url, stream=True)
-response.raise_for_status()
-home_image = Image.open(response.raw)
+#response = requests.get(url, stream=True)
+#response.raise_for_status()
+#home_image = Image.open(response.raw)
 
 
 st.set_page_config(
@@ -130,7 +130,7 @@ def main():
         )
         st.info("""We are a financial company that offers consumer credit""")
         st.markdown("""---""")
-        st.sidebar.image(cover_image, use_column_width=True)
+        #st.sidebar.image(cover_image, use_column_width=True)
 
     tab1, tab2, tab3 = st.tabs(
         ["🏠 About this project", "📈 Make Predictions & Analyze", "🗃 Data Drift Reports"]
@@ -145,7 +145,7 @@ def main():
     with tab1.markdown("**Project Lifecycle**"):
         col1, col2 = st.columns(2)
         col1.info("**About the compagny**")
-        col1.image(home_image, use_column_width=True)
+        #col1.image(home_image, use_column_width=True)
         col1.markdown(
             "<p style='text-align: justify;'>Home Credit strives to broaden financial inclusion for the unbanked population by providing a positive and safe borrowing experience. In order to make sure this underserved population has a positive loan experience, Home Credit makes use of a variety of alternative data--including telco and transactional information--to predict their clients' repayment abilities. While Home Credit is currently using various statistical and machine learning methods to make these predictions, they're challenging Kagglers to help them unlock the full potential of their data. Doing so will ensure that clients capable of repayment are not rejected and that loans are given with a principal, maturity, and repayment calendar that will empower their clients to be successful.</p>",
             unsafe_allow_html=True,
