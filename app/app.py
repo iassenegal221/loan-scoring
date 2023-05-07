@@ -51,10 +51,10 @@ def load():
     features_bytes = io.BytesIO(features_response.content)
     features = np.load(features_bytes, allow_pickle=True)
 
-    return model
+    return model,features
 
 
-loan_scoring_classifier= load()
+loan_scoring_classifier,features= load()
 
 
 
