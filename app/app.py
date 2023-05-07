@@ -65,8 +65,8 @@ loan_scoring_classifier,features, dataframe= load()
 
 scaler = MinMaxScaler()
 data = scaler.fit_transform(dataframe[features])
-data = pd.DataFrame(data, index=raw_data.index, columns=features)
-raw_data = raw_data.reset_index()
+data = pd.DataFrame(data, index=dataframe.index, columns=features)
+raw_data = dataframe.reset_index()
 probas = loan_scoring_classifier.predict_proba(data)
 raw_data["proba_true"] = probas[:, 0]
 mean_score = raw_data["proba_true"].mean()
