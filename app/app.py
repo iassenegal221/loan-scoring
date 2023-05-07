@@ -33,7 +33,7 @@ def load():
     import os
     import io
     import requests
-    model_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/full_data.pkl"#"https://github.com/Alhasdata/loan-scoring/raw/main/app/models/best_model.pkl"
+    model_url = "https://github.com/Alhasdata/loan-scoring/blob/main/app/data/full_data.pkl"#"https://github.com/Alhasdata/loan-scoring/raw/main/app/models/best_model.pkl"
     dataframe_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/full_data.pkl"
     model_response = requests.get(model_url)
     model_response.raise_for_status()
