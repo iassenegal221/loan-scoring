@@ -44,10 +44,10 @@ def load():
 
 
 
-    return model, features, dataframe
+    return model
 
 
-loan_scoring_classifier, training_features, raw_data = load()
+loan_scoring_classifier= load()
 
 
 
