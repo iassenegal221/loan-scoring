@@ -26,20 +26,20 @@ layout="wide",
 def main():
   # main function
   with st.sidebar:
-  col1, col2, col3 = st.columns(3)
-  col2.image(logo_image, use_column_width=True)
-  st.markdown("""---""")
-  st.markdown(
-  """
-  Wo we are?
+    col1, col2, col3 = st.columns(3)
+    col2.image(logo_image, use_column_width=True)
+    st.markdown("""---""")
+    st.markdown(
+    """
+    Wo we are?
 
-  """,
-  unsafe_allow_html=True,
-  )
-  st.info("""We are a financial company that offers consumer credit""")
-  st.markdown("""---""")
-  cover_image = Image.open("https://github.com/iassenegal221/loan-scoring/blob/main/app/data/cover.jpg")
-  st.sidebar.image(cover_image, use_column_width=True)
+    """,
+    unsafe_allow_html=True,
+    )
+    st.info("""We are a financial company that offers consumer credit""")
+    st.markdown("""---""")
+    cover_image = Image.open("https://github.com/iassenegal221/loan-scoring/blob/main/app/data/cover.jpg")
+    st.sidebar.image(cover_image, use_column_width=True)
 
   tab1, tab2, tab3 = st.tabs(
   ["🏠 About this project", "📈 Make Predictions & Analyze", "🗃 Data Drift Reports"]
