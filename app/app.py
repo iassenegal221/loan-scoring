@@ -43,7 +43,7 @@ def load():
     return model
 
 
-loan_scoring_classifier, training_features, raw_data = load()
+loan_scoring_classifier = load()
 
 
 
