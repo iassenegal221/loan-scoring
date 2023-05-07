@@ -40,14 +40,12 @@ def load():
     model_bytes = io.BytesIO(model_response.content)
     model = joblib.load(model_bytes)
 ###### Features #######
-    
-
     features_url = "https://github.com/iassenegal221/loan-scoring/blob/main/app/data/training_features.pkl"
     features_response = requests.get(features_url)
     features_response.raise_for_status()
 
     features_bytes = io.BytesIO(features_response.content)
-    features = joblib.load(features_bytes)
+    features = joblib.load(features_url)
 
 
 
