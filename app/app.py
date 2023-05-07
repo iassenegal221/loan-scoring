@@ -43,7 +43,7 @@ def main():
     )
     st.info("""We are a financial company that offers consumer credit""")
     st.markdown("""---""")
-    url = "https://github.com/iassenegal221/loan-scoring/blob/main/app/data/cover.jpg"
+    url = "https://github.com/iassenegal221/loan-scoring/blob/main/app/data/logo.png"
     response = requests.get(url, stream=True)
     response.raise_for_status()
     cover_image = Image.open(response.raw)
