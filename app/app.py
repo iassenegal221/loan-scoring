@@ -40,10 +40,17 @@ def load():
     model_bytes = io.BytesIO(model_response.content)
     model = joblib.load(model_bytes)
 ###### Features #######
+    import requests
+    import pickle
+    import io
+
     features_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/training_features.pkl"
     features_response = requests.get(features_url)
+    features_response.raise_for_status()
+
     features_bytes = io.BytesIO(features_response.content)
-    features = joblib.load(features_bytes)
+    features = pickle.load(features_bytes)
+
 
 
 
