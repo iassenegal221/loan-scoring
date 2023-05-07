@@ -78,6 +78,32 @@ explainer = lime_tabular.LimeTabularExplainer(
     mode="classification",
 )
 
+def plot_preds_proba(customer_id):
+    """
+    This functions aims plot income, annuities and credit vizuals
+    """
+    user_infos = {
+        "Income": raw_data[raw_data["SK_ID_CURR"] == customer_id][
+            "AMT_INCOME_TOTAL"
+        ].values[0],
+        "Credit": raw_data[raw_data["SK_ID_CURR"] == customer_id]["AMT_CREDIT"].values[
+            0
+        ],
+        "Annuity": raw_data[raw_data["SK_ID_CURR"] == customer_id][
+            "AMT_ANNUITY"
+        ].values[0],
+    }
+    pred_proba_df = pd.DataFrame(
+        {"Amount": user_infos.values(), "Operation": user_infos.keys()}
+    )
+    c = (
+        alt.Chart(pred_proba_df)
+        .mark_bar()
+        .encode(x="Operation", y="Amount", color="Operation")
+        .properties(width=330, height=310)
+    )
+    st.altair_chart(c)
+
 def main():
   # main function
   with st.sidebar:
