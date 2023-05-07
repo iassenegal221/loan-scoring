@@ -24,7 +24,24 @@ page_icon=logo_image,
 layout="wide",
 )
 
+@st.cache_data
+@st.cache_resource
+def load():
+    """
+    This functions aims to load data and models
+    """
+    import os
+    model_path = os.path.join("https://github.com/Alhasdata/loan-scoring/blob/main/app/models/best_model.pkl")
+    features_path = os.path.join("https://github.com/Alhasdata/loan-scoring/blob/main/app/models/training_features.pkl")
+    dataframe_path = os.path.join("https://github.com/Alhasdata/loan-scoring/blob/main/app/models/full_data.pkl")
+    model = joblib.load(model_path)
+    features = joblib.load(features_path)
+    dataframe = joblib.load(dataframe_path)
 
+    return model, features, dataframe
+
+
+loan_scoring_classifier, training_features, raw_data = load()
 
 
 
