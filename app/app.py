@@ -12,7 +12,12 @@ from sklearn.preprocessing import MinMaxScaler
 from PIL import Image
 from lime import lime_tabular
 
-logo_image = Image.open("https://github.com/iassenegal221/loan-scoring/blob/main/app/data/logo.png")
+import requests
+url = "https://github.com/iassenegal221/loan-scoring/raw/main/app/data/logo.png"
+response = requests.get(url, stream=True)
+response.raise_for_status()
+
+logo_image = Image.open(response.raw)
 st.set_page_config(
 page_title="CREDIT SCORING - DACHBOARD CLIENT SCORING",
 page_icon=logo_image,
