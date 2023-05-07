@@ -56,15 +56,15 @@ def load():
     data_response.raise_for_status()
 
     data_bytes = io.BytesIO(data_response.content)
-    data = joblib.load(data_bytes)
+    dataframe = joblib.load(data_bytes)
 
-    return model,features, data
+    return model,features, dataframe
 
 
-loan_scoring_classifier,features, data= load()
+loan_scoring_classifier,features, dataframe= load()
 
 scaler = MinMaxScaler()
-data = scaler.fit_transform(raw_data[training_features])
+data = scaler.fit_transform(dataframe[training_features])
 data = pd.DataFrame(data, index=raw_data.index, columns=training_features)
 raw_data = raw_data.reset_index()
 probas = loan_scoring_classifier.predict_proba(data)
