@@ -27,7 +27,7 @@ def main():
     features_bytes = io.BytesIO(features_response.content)
     features = np.load(features_bytes, allow_pickle=True)
 
-    st.dataframe(features
+    st.text(features
 
     
 
