@@ -24,32 +24,32 @@ layout="wide",
 
 
 def main():
-# main function
-with st.sidebar:
-col1, col2, col3 = st.columns(3)
-col2.image(logo_image, use_column_width=True)
-st.markdown("""---""")
-st.markdown(
-"""
-Wo we are?
+  # main function
+  with st.sidebar:
+  col1, col2, col3 = st.columns(3)
+  col2.image(logo_image, use_column_width=True)
+  st.markdown("""---""")
+  st.markdown(
+  """
+  Wo we are?
 
-""",
-unsafe_allow_html=True,
-)
-st.info("""We are a financial company that offers consumer credit""")
-st.markdown("""---""")
-cover_image = Image.open("https://github.com/iassenegal221/loan-scoring/blob/main/app/data/cover.jpg")
-st.sidebar.image(cover_image, use_column_width=True)
+  """,
+  unsafe_allow_html=True,
+  )
+  st.info("""We are a financial company that offers consumer credit""")
+  st.markdown("""---""")
+  cover_image = Image.open("https://github.com/iassenegal221/loan-scoring/blob/main/app/data/cover.jpg")
+  st.sidebar.image(cover_image, use_column_width=True)
 
-tab1, tab2, tab3 = st.tabs(
-["🏠 About this project", "📈 Make Predictions & Analyze", "🗃 Data Drift Reports"]
-)
-tab1.markdown("""---""")
-tab1.subheader("Credit Score")
-tab1.markdown(
-"This tool gives **guidance in credit granting decision** for our Relationship Managers. Based on customer's loan history and personnal informations, it predicts whether if he can refund a credit. It is based on one of the most powerful boosting algorith: **LightGBM**. \n To start, click on 'Make predictions & Analyze' at the top of the page. "
-)
-tab1.markdown("""---""")
+  tab1, tab2, tab3 = st.tabs(
+  ["🏠 About this project", "📈 Make Predictions & Analyze", "🗃 Data Drift Reports"]
+  )
+  tab1.markdown("""---""")
+  tab1.subheader("Credit Score")
+  tab1.markdown(
+  "This tool gives **guidance in credit granting decision** for our Relationship Managers. Based on customer's loan history and personnal informations, it predicts whether if he can refund a credit. It is based on one of the most powerful boosting algorith: **LightGBM**. \n To start, click on 'Make predictions & Analyze' at the top of the page. "
+  )
+  tab1.markdown("""---""")
 
 
 
