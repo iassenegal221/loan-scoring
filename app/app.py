@@ -44,7 +44,7 @@ def load():
     features_response = requests.get(features_url)
     model_response.raise_for_status()
     features_bytes = io.BytesIO(features_response.content)
-  #  features = joblib.load(features_bytes)
+    features = joblib.load(features_bytes)
 
 
 
