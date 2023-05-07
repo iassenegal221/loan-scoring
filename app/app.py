@@ -29,7 +29,7 @@ def f():
 
 
 def main():
-    f()
+    st.text(f())
 
     
 
