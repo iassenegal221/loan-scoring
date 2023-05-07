@@ -39,9 +39,8 @@ def load():
     model_response = requests.get(model_url)
     model_response.raise_for_status()
     features_response = requests.get(features_url)
-    features_response.raise_for_status()
+
     dataframe_response = requests.get(dataframe_url)
-    dataframe_response.raise_for_status()
 
     model_bytes = io.BytesIO(model_response.content)
     features_bytes = io.BytesIO(features_response.content)
