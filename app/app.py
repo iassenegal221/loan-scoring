@@ -159,7 +159,7 @@ def main():
         with st.form(key="myform"):
             # user_liste = data.index
             # user_id_value = st.selectbox('Select customer id', user_liste)
-            user_id_value = st.number_input("Select customer id", min_value=100001)
+            user_id_value = st.number_input("Select customer id", min_value=1)
             submit_button = st.form_submit_button(label="Show")
 
             if submit_button:
