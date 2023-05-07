@@ -33,23 +33,14 @@ def load():
     import os
     import io
     import requests
-    model_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/best_model.pkl"
+    model_url = "https://github.com/iassenegal221/loan-scoring/app/data/training_features.pkl"#"https://github.com/Alhasdata/loan-scoring/raw/main/app/models/best_model.pkl"
     dataframe_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/full_data.pkl"
     model_response = requests.get(model_url)
     model_response.raise_for_status()
     model_bytes = io.BytesIO(model_response.content)
     model = joblib.load(model_bytes)
 ###### Features #######
-    features_url = "https://github.com/iassenegal221/loan-scoring/app/data/training_features.pkl"
-    import requests
-    import pickle
-    import io
 
-    features_response = requests.get(features_url)
-    features_response.raise_for_status()
-
-    features_bytes = io.BytesIO(features_response.content)
-    features = joblib.load(features_bytes)
 
 
 
