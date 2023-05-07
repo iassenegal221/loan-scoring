@@ -12,10 +12,7 @@ from sklearn.preprocessing import MinMaxScaler
 from PIL import Image
 from lime import lime_tabular
 
-
-
-
-def main():
+def f():
     import requests
     import numpy as np
     import io
@@ -26,8 +23,13 @@ def main():
 
     features_bytes = io.BytesIO(features_response.content)
     features = np.load(features_bytes, allow_pickle=True)
+    return features
 
-    st.text(features
+
+
+
+def main():
+    f()
 
     
 
