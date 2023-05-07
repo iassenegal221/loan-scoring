@@ -32,7 +32,7 @@ def load():
     """
     import os
     import io
-
+    import requests
     model_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/best_model.pkl"
     dataframe_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/full_data.pkl"
     model_response = requests.get(model_url)
@@ -40,7 +40,7 @@ def load():
     model_bytes = io.BytesIO(model_response.content)
     model = joblib.load(model_bytes)
 ###### Features #######
-    import requests
+    
 
     features_url = "https://github.com/iassenegal221/loan-scoring/blob/main/app/data/training_features.pkl"
     features_response = requests.get(features_url)
