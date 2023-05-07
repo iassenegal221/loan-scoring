@@ -42,7 +42,6 @@ def load():
 ###### Features #######
     features_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/training_features.pkl"
     features_response = requests.get(features_url)
-    features_response_response.raise_for_status()
     features_bytes = io.BytesIO(features_response.content)
     features = joblib.load(features_bytes)
 
