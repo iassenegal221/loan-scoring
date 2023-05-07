@@ -43,7 +43,10 @@ def main():
     )
     st.info("""We are a financial company that offers consumer credit""")
     st.markdown("""---""")
-    cover_image = Image.open("https://github.com/iassenegal221/loan-scoring/blob/main/app/data/cover.jpg")
+    url = "https://github.com/iassenegal221/loan-scoring/blob/main/app/data/cover.jpg"
+    response = requests.get(url, stream=True)
+    response.raise_for_status()
+    cover_image = Image.open(response.raw)
     st.sidebar.image(cover_image, use_column_width=True)
 
   tab1, tab2, tab3 = st.tabs(
