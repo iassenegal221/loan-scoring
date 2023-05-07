@@ -63,7 +63,20 @@ def load():
 
 loan_scoring_classifier,features, data= load()
 
+scaler = MinMaxScaler()
+data = scaler.fit_transform(raw_data[training_features])
+data = pd.DataFrame(data, index=raw_data.index, columns=training_features)
+raw_data = raw_data.reset_index()
+probas = loan_scoring_classifier.predict_proba(data)
+raw_data["proba_true"] = probas[:, 0]
+mean_score = raw_data["proba_true"].mean()
 
+explainer = lime_tabular.LimeTabularExplainer(
+    training_data=np.array(data),
+    feature_names=data.columns,
+    # class_names=['bad', 'good'],
+    mode="classification",
+)
 
 def main():
   # main function
