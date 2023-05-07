@@ -56,7 +56,7 @@ def load():
     data_response.raise_for_status()
 
     data_bytes = io.BytesIO(data_response.content)
-    data = np.load(data_bytes, allow_pickle=True)
+    data = joblib.load(data_bytes)
 
     return model,features, data
 
