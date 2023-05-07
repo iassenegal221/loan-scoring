@@ -50,11 +50,18 @@ def load():
 
     features_bytes = io.BytesIO(features_response.content)
     features = np.load(features_bytes, allow_pickle=True)
+###### Data #######
+    data_url = "https://github.com/iassenegal221/loan-scoring/raw/main/app/data/full_data.pkl"
+    data_response = requests.get(data_url)
+    data_response.raise_for_status()
 
-    return model,features
+    data_bytes = io.BytesIO(data_response.content)
+    data = np.load(data_bytes, allow_pickle=True)
+
+    return model,features, data
 
 
-loan_scoring_classifier,features= load()
+loan_scoring_classifier,features, data= load()
 
 
 
