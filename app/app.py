@@ -38,16 +38,10 @@ def load():
     dataframe_url = "https://github.com/Alhasdata/loan-scoring/raw/main/app/models/full_data.pkl"
     model_response = requests.get(model_url)
     model_response.raise_for_status()
-    features_response = requests.get(features_url)
-
-    dataframe_response = requests.get(dataframe_url)
 
     model_bytes = io.BytesIO(model_response.content)
-    features_bytes = io.BytesIO(features_response.content)
-    dataframe_bytes = io.BytesIO(dataframe_response.content)
     model = joblib.load(model_bytes)
-    features = joblib.load(features_bytes)
-    dataframe = joblib.load(dataframe_bytes)
+
 
 
     return model, features, dataframe
