@@ -29,7 +29,6 @@ url = "https://github.com/iassenegal221/loan-scoring/raw/main/app/data/lifecycle
 #response.raise_for_status()
 #home_image = Image.open(response.raw)
 
-
 st.set_page_config(
 page_title="CREDIT SCORING - DACHBOARD CLIENT SCORING",
 page_icon=logo_image,
@@ -115,7 +114,7 @@ def plot_preds_proba(customer_id):
         .properties(width=330, height=310)
     )
     st.altair_chart(c)
-st.write(dataframe)
+#st.write(dataframe)
 def main():
     # main function
     with st.sidebar:
