@@ -252,7 +252,7 @@ def main():
                         )
                         components.html(exp.as_html(), height=550)
                         st.markdown("""---""")
-                        plot_preds_proba(user_id_value)
+                       # plot_preds_proba(user_id_value)
                 else:
                     st.error("Please, enter a valid customer id.", icon="🚨")
 
