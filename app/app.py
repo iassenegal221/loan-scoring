@@ -132,7 +132,7 @@ def main():
         #st.sidebar.image(cover_image, use_column_width=True)
 
     tab1, tab2, tab3 = st.tabs(
-        ["🏠 About this project", "📈 Make Predictions & Analyze", "🗃 Data Drift Reports"]
+        ["🏠 About this application", "📈 Make Predictions & Analyze", "🗃 Data Drift Reports"]
     )
     tab1.markdown("""---""")
     tab1.subheader("Credit Score")
@@ -141,18 +141,6 @@ def main():
     )
     tab1.markdown("""---""")
 
-    with tab1.markdown("**Project Lifecycle**"):
-        col1, col2 = st.columns(2)
-        col1.info("**About the compagny**")
-        #col1.image(home_image, use_column_width=True)
-        col1.markdown(
-            "<p style='text-align: justify;'>Home Credit strives to broaden financial inclusion for the unbanked population by providing a positive and safe borrowing experience. In order to make sure this underserved population has a positive loan experience, Home Credit makes use of a variety of alternative data--including telco and transactional information--to predict their clients' repayment abilities. While Home Credit is currently using various statistical and machine learning methods to make these predictions, they're challenging Kagglers to help them unlock the full potential of their data. Doing so will ensure that clients capable of repayment are not rejected and that loans are given with a principal, maturity, and repayment calendar that will empower their clients to be successful.</p>",
-            unsafe_allow_html=True,
-        )
-
-       # lifecycle_schema = Image.open("https://github.com/iassenegal221/loan-scoring/blob/main/app/data/lifecycle.png")
-      #  col2.info("**Project Lifecycle**")
-      #  col2.image(lifecycle_schema, use_column_width=True)
 
     with tab2.subheader("Loan Scoring Model"):
         with st.form(key="myform"):
