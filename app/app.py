@@ -159,11 +159,11 @@ def main():
             # user_liste = data.index
             # user_id_value = st.selectbox('Select customer id', user_liste)
             user_id_value = st.number_input("Select customer id", min_value=100001)
-            submit_button = st.form_submit_button(label="Show")
+            submit_button = st.form_submit_button(label="Prédire")
 
             if submit_button:
                 if isinstance(user_id_value, int) and user_id_value in data.index:
-                    st.write("Customer selected : ", user_id_value)
+                    st.write("Client sélectionné : ", user_id_value)
                     col1, col2 = st.columns(2)
                     # data = data.reset_index()
                     user = data[data.index == int(user_id_value)]
@@ -178,7 +178,7 @@ def main():
 
                     # display results
                     with col1:
-                        st.info("Customer Infos")
+                        st.info("Informations client")
                         # st.text(f'User Id : {user_id_value}')
                         user_infos = raw_data[raw_data["SK_ID_CURR"] == user_id_value]
 
