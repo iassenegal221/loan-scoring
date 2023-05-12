@@ -186,23 +186,23 @@ def main():
 
                         dict_infos = {
                             "Age": int(user_infos["DAYS_BIRTH"] / -365),
-                            "Gender": user_infos["CODE_GENDER"]
+                            "Sexe": user_infos["CODE_GENDER"]
                                 .replace(["F", "M"], ["Female", "Male"])
                                 .item(),
-                            "Status": user_infos["NAME_FAMILY_STATUS"].item(),
-                            "Education": user_infos["NAME_EDUCATION_TYPE"].item(),
-                            "Employment_Seniority": int(user_infos["DAYS_EMPLOYED"].values / -365),
-                            "Income_Type": user_infos["NAME_INCOME_TYPE"].item(),
-                            "Income_Ammount": user_infos["AMT_INCOME_TOTAL"].item(),
+                            "Statut matrimonial": user_infos["NAME_FAMILY_STATUS"].item(),
+                            "Niveau éducation": user_infos["NAME_EDUCATION_TYPE"].item(),
+                            "Expérience professionnelle": int(user_infos["DAYS_EMPLOYED"].values / -365),
+                            "Activité": user_infos["NAME_INCOME_TYPE"].item(),
+                            "Revenu": user_infos["AMT_INCOME_TOTAL"].item(),
                         }
                         st.write(dict_infos)
 
                     with col2:
-                        st.info("Loan History")
+                        st.info("Historique des prêt")
                         dict_infos = {
-                            "Type contrat": user_infos["NAME_CONTRACT_TYPE"].item(),
-                            "Montant_credit": user_infos["AMT_CREDIT"].item(),
-                            "Annuites": user_infos["AMT_ANNUITY"].item(),
+                            "Type de contrat": user_infos["NAME_CONTRACT_TYPE"].item(),
+                            "Montant du credit": user_infos["AMT_CREDIT"].item(),
+                            "Annuité": user_infos["AMT_ANNUITY"].item(),
                         }
                         st.write(dict_infos)
                         # st.metric(label='Accuracy', value='', delta='1.6')
@@ -211,7 +211,7 @@ def main():
                         # c1, c2, c3, c4, c5 = st.columns(5)
                         if round(probabilities[0] * 100, 2) > 60:
                             st.metric(
-                                "High Score",
+                                "Score élevé",
                                 value=round(probabilities[0] * 100, 2),
                                 delta=f"{round((probabilities[0]-0.6)*100,2)}",
                             )
@@ -221,22 +221,22 @@ def main():
                             )
                         elif 50 < round(probabilities[0] * 100, 2) < 60:
                             st.metric(
-                                "Medium Score",
+                                "Score acceptabe",
                                 value=round(probabilities[0] * 100, 2),
                                 delta=f"{round((probabilities[0]-0.6)*100,2)}",
                             )
 
                             st.warning(
-                                "This customer may have difficulties in refunding",
+                                "Ce client peut avoir des difficultés à rembourser",
                                 icon="⚠️",
                             )
                         else:
                             st.metric(
-                                "Low Score",
+                                "Score Faible",
                                 value=round(probabilities[0] * 100, 2),
                                 delta=f"{round((probabilities[0]-0.6)*100,2)}",
                             )
-                            st.error("This customer can not refund", icon="🚨")
+                            st.error("Ce client ne peut pas rembourser", icon="🚨")
 
                 else:
                     st.error("Please, enter a valid customer id.", icon="🚨")
