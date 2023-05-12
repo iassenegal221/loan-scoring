@@ -6,12 +6,12 @@ Tools for :
 """
 import pandas as pd
 import numpy as np
-import mlflow
+
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report
 from sklearn.model_selection import KFold, StratifiedKFold
 from sklearn.model_selection import KFold
-from yellowbrick.classifier import ConfusionMatrix
+
 import pickle
 import gc
 import re
@@ -107,10 +107,11 @@ def bureau_and_balance(num_rows=None, nan_as_category=True):
         cat_aggregations[cat] = ["mean"]
     for cat in bb_cat:
         cat_aggregations[cat + "_MEAN"] = ["mean"]
+    aggregations = num_aggregations.copy()
+    aggregations.update(cat_aggregations)
 
-    bureau_agg = bureau.groupby("SK_ID_CURR").agg(
-        {**num_aggregations, **cat_aggregations}
-    )
+    bureau_agg = bureau.groupby("SK_ID_CURR").agg(aggregations)
+
     bureau_agg.columns = pd.Index(
         ["BURO_" + e[0] + "_" + e[1].upper() for e in bureau_agg.columns.tolist()]
     )
@@ -169,8 +170,10 @@ def previous_applications(num_rows=None, nan_as_category=True):
     cat_aggregations = {}
     for cat in cat_cols:
         cat_aggregations[cat] = ["mean"]
+    aggregations = num_aggregations.copy()
+    aggregations.update(cat_aggregations)
 
-    prev_agg = prev.groupby("SK_ID_CURR").agg({**num_aggregations, **cat_aggregations})
+    prev_agg = prev.groupby("SK_ID_CURR").agg(aggregations)
     prev_agg.columns = pd.Index(
         ["PREV_" + e[0] + "_" + e[1].upper() for e in prev_agg.columns.tolist()]
     )
@@ -336,11 +339,11 @@ def cross_val_split(X, y, num_folds=10, stratified=False, debug=False):
         "y_train": train_y,
         "y_test": valid_y,
     }.items():
-        print(f"{key} shape : {value.shape}")
+        print(value.shape)
     return train_x, valid_x, train_y, valid_y
 
 
-# Cette fonction a pour objectif d'afficher un aperçu et une description d'un dataframe ainsi que le nbre de missing values qu'il contient
+
 def describe_data(df, figsize=(6, 4)):
     # print('*'*35,'Data infos','*'*35)
 
@@ -417,31 +420,4 @@ def evaluate_model(model, x, y, x_test, y_test, model_name, balancing_method):
 # ------------------------------------------
 
 
-def run_experiment(
-    experiment_name,
-    name,
-    model,
-    X_train,
-    X_test,
-    y_train,
-    y_test,
-    model_name,
-    balancing_method,
-):
-    mlflow.set_experiment(experiment_name)
-    mlflow.sklearn.autolog()
-    mlflow.lightgbm.autolog()
-    with mlflow.start_run(run_name=name):
-        mlflow.set_tag("delevoper", "Alassane")
-        my_model = model
-        my_model.fit(X_train, y_train)
-        y_pred = my_model.predict(X_test)
-        print("*" * 25, f"Test scores - {name}", "*" * 25)
-        print(classification_report(y_test, y_pred))
-        cm = ConfusionMatrix(my_model, classes=y_train.value_counts().index)
-        cm.score(X_test, y_test)
-        cm.show()
-        metrics = evaluate_model(
-            my_model, X_train, y_train, X_test, y_test, model_name, balancing_method
-        )
-        return metrics, my_model
+
