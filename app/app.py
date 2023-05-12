@@ -177,40 +177,33 @@ def main():
                     )
 
                     # display results
+                    # display results
+                    col1, col2 = st.beta_columns(2)
+
                     with col1:
                         st.info("Informations client")
-                        # st.text(f'User Id : {user_id_value}')
                         user_infos = raw_data[raw_data["SK_ID_CURR"] == user_id_value]
 
-                        # st.write('Age', int(user_infos["DAYS_BIRTH"]/ -365))
-                        # st.write('Sex', user_infos["CODE_GENDER"].item())
-                        # st.write('Status', user_infos["NAME_FAMILY_STATUS"].item())
-                        # st.write('Age', int(user_infos["DAYS_BIRTH"]/ -365))
-                        # user_infos = user_infos[[]]
                         dict_infos = {
                             "Age": int(user_infos["DAYS_BIRTH"] / -365),
                             "Gender": user_infos["CODE_GENDER"]
-                            .replace(["F", "M"], ["Female", "Male"])
-                            .item(),
+                                .replace(["F", "M"], ["Female", "Male"])
+                                .item(),
                             "Status": user_infos["NAME_FAMILY_STATUS"].item(),
                             "Education": user_infos["NAME_EDUCATION_TYPE"].item(),
-                            "Employment_Seniority": int(
-                                user_infos["DAYS_EMPLOYED"].values / -365
-                            ),
+                            "Employment_Seniority": int(user_infos["DAYS_EMPLOYED"].values / -365),
                             "Income_Type": user_infos["NAME_INCOME_TYPE"].item(),
                             "Income_Ammount": user_infos["AMT_INCOME_TOTAL"].item(),
                         }
                         st.write(dict_infos)
 
-                        # st.info('Results')
-                        st.markdown("""---""")
+                    with col2:
                         st.info("Loan History")
                         dict_infos = {
                             "Type contrat": user_infos["NAME_CONTRACT_TYPE"].item(),
                             "Montant_credit": user_infos["AMT_CREDIT"].item(),
                             "Annuites": user_infos["AMT_ANNUITY"].item(),
                         }
-                        user = data[data.index == int(user_id_value)]
                         st.write(dict_infos)
                         # st.metric(label='Accuracy', value='', delta='1.6')
                         st.markdown("""---""")
