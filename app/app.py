@@ -186,7 +186,7 @@ def main():
                         st.write(dict_infos)
 
                     with col2:
-                        st.info("Historique des prêt")
+                        st.info("Historique des prêt du client")
                         dict_infos = {
                             "Type de contrat": user_infos["NAME_CONTRACT_TYPE"].item(),
                             "Montant du credit": user_infos["AMT_CREDIT"].item(),
@@ -225,6 +225,15 @@ def main():
                                 delta=f"{round((probabilities[0]-0.6)*100,2)}",
                             )
                             st.error("Ce client ne peut pas rembourser", icon="🚨")
+                      with col2:
+                        st.info("Features contribution")
+                        exp = explainer.explain_instance(
+                            data_row=data.loc[user_id_value],
+                            predict_fn=loan_scoring_classifier.predict_proba,
+                        )
+                        components.html(exp.as_html(), height=550)
+                        st.markdown("""---""")
+                        plot_preds_proba(user_id_value)
 
                 else:
                     st.error("Please, enter a valid customer id.", icon="🚨")
