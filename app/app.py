@@ -128,9 +128,6 @@ def main():
             unsafe_allow_html=True,
         )
         st.info("""We are a recherche développement company that offers AI based services""")
-        # Add image to the page
-        image_path = "https://github.com/iassenegal221/loan-scoring/blob/main/img/credit-card.jpeg"  # Replace with the actual path to your image
-        st.image(image_path, use_column_width=True)
         st.markdown("""---""")
         #st.sidebar.image(cover_image, use_column_width=True)
 
