@@ -225,7 +225,7 @@ def main():
                                 delta=f"{round((probabilities[0]-0.6)*100,2)}",
                             )
                             st.error("Ce client ne peut pas rembourser", icon="🚨")
-                      with col2:
+                    with col2:
                         st.info("Features contribution")
                         exp = explainer.explain_instance(
                             data_row=data.loc[user_id_value],
